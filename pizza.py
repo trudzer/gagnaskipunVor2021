@@ -76,6 +76,8 @@ while pizza_input != "q":
         print()
     elif pizza_input == "4":
         clear()
+        print_pizza(pizza_dict)
+        print()
         id = int(input("ID: "))
         toping1 = input("Toping 1: ")
         toping2 = input("Toping 2: ")
