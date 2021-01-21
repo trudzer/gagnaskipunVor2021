@@ -6,8 +6,10 @@ def example_func(n):
 def example_func_helper(i, n):
     if i > n:
         return 0
-    print(i)
+    print(i, end=" ")
     return i + example_func_helper(i+1, n)
+print("Example: ", end="")
+print(example_func(5))
 
 #power function----------------------------------------------------------------------------
 
