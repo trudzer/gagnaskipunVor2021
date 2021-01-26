@@ -69,9 +69,9 @@ def binary_search(list, value):
         return False
 
 
-print("Length of string:",end=" "), print(string_recur('abcdefghijklmn'))
-print("Value in list:", end=" "), print(linear_search([1,2,3,4,5,"hallo",6,7,9], "hallo"))
-print("Number of instances:", end=" "), print(count_instance([1,2,3,4,5,1,2,1,3,4,5,1,2,1,1,1],1))
-print("Duplicates:", end=" "), print(duplicate([1,2,3,4,5,6,4,7]))
-print("list without duplicate:", end=" "), print(remove_duplicate([1,2,3,4,1,2,5,6,7,5,6,3,8,9,10,11,11,4]))
-print("Binary search:", end=" "), print(binary_search([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18], 10))
+print("Length of string:",end=" "),         print(string_recur('abcdefghijklmn'))
+print("Value in list:", end=" "),           print(linear_search([1,2,3,4,5,"hallo",6,7,9], "hallo"))
+print("Number of instances:", end=" "),     print(count_instance([1,2,3,4,5,1,2,1,3,4,5,1,2,1,1,1],1))
+print("Duplicates:", end=" "),              print(duplicate([1,2,3,4,5,6,4,7]))
+print("list without duplicate:", end=" "),  print(remove_duplicate([1,2,3,4,1,2,5,6,7,5,6,3,8,9,10,11,11,4]))
+print("Binary search:", end=" "),           print(binary_search([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18], 10))
