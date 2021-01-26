@@ -4,9 +4,6 @@ def string_recur(word):
         return 0
     return string_recur(word[:-1]) + 1
 
-print("Length of string:",end=" ")
-print(string_recur('abcdefg'))
-
 
 def linear_search(list, value):
     if list[::] == []:
@@ -17,21 +14,15 @@ def linear_search(list, value):
 
     return linear_search(list[:-1], value)
 
-print("Value in list:", end=" ")
-print(linear_search([1,2,3,4,5,"hallo"], "hallo"))
 
-
-
-def count_instance(list, value, count):
+def count_instance(list, value):
     if list[::] == []:
-        return count
+        return 0
 
     if list[-1] == value:
-        count += 1
-    return count_instance(list[:-1], value, count)
-
-print("Number of instances:", end=" ")
-print(count_instance([1,2,3,4,5,1,2,1,3,4,5],1,0))
+        return count_instance(list[:-1], value) + 1
+    
+    return count_instance(list[:-1], value)
 
 
 def duplicate(list):
@@ -43,9 +34,6 @@ def duplicate(list):
         return False
 
     return duplicate(list[:-1])
-
-print("Duplicates:", end=" ")
-print(duplicate([65,66,23,11,54,33,65,1,22,57]))
 
 
 def remove_duplicate(list):
@@ -59,11 +47,7 @@ def remove_duplicate(list):
         return remove_duplicate(tail)
     
     else:
-        return [head] + remove_duplicate(tail)
-
-print("list without duplicate:", end=" ")
-print(remove_duplicate([1,2,3,4,1,2]))
-
+        return sorted([head] + remove_duplicate(tail))
 
 
 def binary_search(list, value):
@@ -83,5 +67,10 @@ def binary_search(list, value):
     else:
         return False
 
-print("Binary search:", end=" ")
-print(binary_search([1,2,3,4,5,6,7,8,9,10,11,12], 10))
+
+print("Length of string:",end=" "), print(string_recur('abcdefghijklmn'))
+print("Value in list:", end=" "), print(linear_search([1,2,3,4,5,"hallo",6,7,9], "hallo"))
+print("Number of instances:", end=" "), print(count_instance([1,2,3,4,5,1,2,1,3,4,5,1,2,1,1,1],1))
+print("Duplicates:", end=" "), print(duplicate([65,66,23,11,54,33,65,1,22,57]))
+print("list without duplicate:", end=" "), print(remove_duplicate([1,2,3,4,1,2,5,6,7,5,6,3,8,9,10,11,11,4]))
+print("Binary search:", end=" "), print(binary_search([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18], 10))
