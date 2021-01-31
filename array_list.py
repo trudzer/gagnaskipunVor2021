@@ -1,6 +1,5 @@
 class IndexOutOfBounds(Exception):
     pass
-
 class Empty(Exception):
     pass
 
@@ -115,31 +114,31 @@ class ArrayList:
     #Time complexity: O(n) - linear time in size of sublist
     def sublist(self, start, length):
         # TODO: remove 'pass' and implement functionality
-        pass
+        index = 0
+        new_list = [0] * length
+        if start >= self.size:
+            raise IndexOutOfBounds()
+        for i in range(length):
+            if self.arr[start+i] == 0:
+                raise IndexOutOfBounds()
+            new_list[index] = self.arr[start+i]
+            index += 1
+        return new_list
+
 
     #Time complexity: O(n) - linear time in size of concatinated list
     # OR
     #Time complexity: O(n+m) - linear time in size of both lists, self and other
     def concatenate(self, other):
         # TODO: remove 'pass' and implement functionality
-        pass
-
-
-if __name__ == "__main__":
-    pass
-    # add your tests here or in a different file.
-    # Do not add them outside this if statement
-    # and make sure they are at this indent level
-
-    arr_lis = ArrayList()
-    arr_lis.append(1) #0
-    arr_lis.append(2) #1
-    arr_lis.append(3) #2
-    arr_lis.append(4) #3
-    arr_lis.append(5) #4
-    arr_lis.append(6) #5
-    #-------------(0) #6
-    print(str(arr_lis))
-    #print(arr_lis.get_first())
-    #print(arr_lis.get_last())
-    #print(arr_lis.get_at(3))
+        index = 0
+        self.capacity = self.size + other.size
+        new_list = [0] * self.capacity
+        for i in range(self.size):
+            new_list[index] = self.arr[i]
+            index += 1
+        for i in range(other.size):
+            new_list[index] = other.arr[i]
+            index += 1
+        self.arr = new_list
+        return self.arr
