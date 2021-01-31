@@ -1,4 +1,3 @@
-
 def less_than(a, b):  # ONLY NEEDS TO WORK FOR POSITIVE INTEGERS
     #TODO: remove 'pass' and implement functionality
     if a == b:
