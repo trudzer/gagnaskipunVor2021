@@ -14,13 +14,16 @@ class ArrayList:
     def __str__(self):
         # TODO: remove 'pass' and implement functionality
         return_string = ""
-        for i in range(self.size):
-            return_string += (str(self.arr[i]) + ", ")
+        if self.arr != []:
+            for i in range(self.size):
+                return_string += (str(self.arr[i]) + ", ")
         return return_string[:-2]
 
     #Time complexity: O(n) - linear time in size of list
     def prepend(self, value):
         # TODO: remove 'pass' and implement functionality
+        if self.size == self.capacity:
+            self.resize()
         self.size += 1
         for i in range(self.size):
             self.arr[self.size - (i + 1)] = self.arr[self.size - (i + 2)]
@@ -29,16 +32,19 @@ class ArrayList:
     #Time complexity: O(n) - linear time in size of list
     def insert(self, value, index):
         # TODO: remove 'pass' and implement functionality
-        self.size += 1
-        if self.size < index:
+        if self.size == self.capacity:
+            self.resize()
+        if (self.size + 1) <= index or index < 0:
             raise IndexOutOfBounds()
+        self.size += 1
+        if self.size == self.capacity:
+            self.resize()
+        position = self.size
+        while position > index:
+            self.arr[position] = self.arr[position - 1]
+            position -= 1
+        self.arr[index] = value
 
-        for i in range(self.size):
-            if index == (self.size - i):
-                self.arr[self.size - (i + 1)] = value
-                break
-            else:
-                self.arr[self.size - (i +  1)] = self.arr[self.size - (i + 2)]
 
 
     #Time complexity: O(1) - constant time
@@ -52,28 +58,28 @@ class ArrayList:
     #Time complexity: O(1) - constant time
     def set_at(self, value, index):
         # TODO: remove 'pass' and implement functionality
-        if self.size < index:
+        if self.size <= index or self.size == 0 or self.size < 0 or index < 0:
             raise IndexOutOfBounds()
         self.arr[index] = value
 
     #Time complexity: O(1) - constant time
     def get_first(self):
         # TODO: remove 'pass' and implement functionality
-        if self.size == 0:
+        if self.size == 0 or self.size < 0:
             raise Empty()
         return self.arr[0]
 
     #Time complexity: O(1) - constant time
     def get_at(self, index):
         # TODO: remove 'pass' and implement functionality
-        if self.size < index:
+        if self.size <= index or self.size < 0 or index < 0:
             raise IndexOutOfBounds()
         return self.arr[index]
 
     #Time complexity: O(1) - constant time
     def get_last(self):
         # TODO: remove 'pass' and implement functionality
-        if self.size < 1:
+        if self.size == 0 or self.size < 0:
             raise Empty()
         return self.arr[self.size-1]
 
@@ -92,7 +98,7 @@ class ArrayList:
     def remove_at(self, index):
         # TODO: remove 'pass' and implement functionality
 
-        if self.size <= index:
+        if self.size <= index or self.size == 0 or self.size < 0 or index < 0:
             raise IndexOutOfBounds()
         for i in range(self.size):
             if index == self.size:
@@ -111,19 +117,28 @@ class ArrayList:
         self.size = 0
         self.arr = [0] * self.capacity
 
+
     #Time complexity: O(n) - linear time in size of sublist
     def sublist(self, start, length):
         # TODO: remove 'pass' and implement functionality
-        index = 0
-        new_list = [0] * length
-        if start >= self.size:
+        new_list = ArrayList()
+        #index = 0
+        #return_string = ""
+        #new_list = [0] * length
+        if start >= self.size or start < 0 or (start + length) >= self.size:
             raise IndexOutOfBounds()
         for i in range(length):
             if self.arr[start+i] == 0:
                 raise IndexOutOfBounds()
-            new_list[index] = self.arr[start+i]
-            index += 1
+            if self.arr[start+i] != 0:
+                new_list.append(self.arr[start+i])
+                #new_list[index] = self.arr[start+i]
+            #index += 1
+        #for i in range(length):
+            #return_string += (str(new_list[i]) + ", ")
+        #return return_string[:-2]
         return new_list
+
 
 
     #Time complexity: O(n) - linear time in size of concatinated list
@@ -131,14 +146,32 @@ class ArrayList:
     #Time complexity: O(n+m) - linear time in size of both lists, self and other
     def concatenate(self, other):
         # TODO: remove 'pass' and implement functionality
-        index = 0
+        new_list = ArrayList()
+        #index = 0
+        #return_string = ""
         self.capacity = self.size + other.size
-        new_list = [0] * self.capacity
+        #new_list = [0] * self.capacity
         for i in range(self.size):
-            new_list[index] = self.arr[i]
-            index += 1
+            new_list.append(self.arr[i])
+            #new_list[index] = self.arr[i]
+            #index += 1
         for i in range(other.size):
-            new_list[index] = other.arr[i]
-            index += 1
-        self.arr = new_list
-        return self.arr
+            new_list.append(other.arr[i])
+            #new_list[index] = self.arr[i]
+            #index += 1
+        #self.arr = new_list
+        #for i in range((self.size+other.size)):
+        #    return_string += (str(new_list[i]) + ", ")
+        #return return_string[:-2]
+        return new_list
+
+
+if __name__ == "__main__":
+    pass
+    # add your tests here or in a different file.
+    # Do not add them outside this if statement
+    # and make sure they are at this indent level
+
+    arr_lis = ArrayList()
+
+    print(str(arr_lis))
