@@ -1,11 +1,13 @@
 class Deque:
 
     DEFAULT_CAPACITY = 4
+    DEFAULT_SIZE = 0
+    DEFAULT_ARRAY = [0] * DEFAULT_CAPACITY
 
     def __init__(self):
         self.capacity = Deque.DEFAULT_CAPACITY
-        self.size = 0
-        self.arr = [0] * self.capacity
+        self.size = Deque.DEFAULT_SIZE
+        self.arr = Deque.DEFAULT_ARRAY
 
     def __str__(self):
         return_string = ""
