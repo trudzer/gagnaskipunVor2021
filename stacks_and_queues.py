@@ -17,7 +17,7 @@ class Deque:
         the_str +=  return_string[:-2]
         return the_str
 
-    def is_empty(self):
+    def __is_empty(self):
         print("List is empty!")
 
     def resize(self):
@@ -49,7 +49,7 @@ class Deque:
 
     def pop_front(self):
         if self.size == 0:
-            self.is_empty()
+            self.__is_empty()
             return 0
         else:
             last_num =  self.arr[self.size-1]
@@ -60,7 +60,7 @@ class Deque:
 
     def pop_back(self):
         if self.size == 0:
-            self.is_empty()
+            self.__is_empty()
             return 0
         else:
             first_num = self.arr[0]
@@ -76,12 +76,7 @@ class Deque:
 
 stack_lis = Deque()
 
-stack_lis.push_front(3)
-stack_lis.push_front(2)
-stack_lis.push_back(4)
-stack_lis.push_back(5)
-stack_lis.push_back(6)
-stack_lis.push_front(1)
+
 
 print("-"*70)
 print(str(stack_lis))
