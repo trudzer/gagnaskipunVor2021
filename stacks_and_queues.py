@@ -81,34 +81,34 @@ class Deque:
             print("{:<9} removed from back".format(first_num))
             return first_num
 
+if __name__== "__main__":
+    stack_lis = Deque()
 
-stack_lis = Deque()
+    stack_lis.push_front(3)
+    stack_lis.push_front(2)
+    stack_lis.push_back(4)
+    stack_lis.push_back(5)
+    stack_lis.push_back(6)
+    stack_lis.push_front(1)
 
-stack_lis.push_front(3)
-stack_lis.push_front(2)
-stack_lis.push_back(4)
-stack_lis.push_back(5)
-stack_lis.push_back(6)
-stack_lis.push_front(1)
+    print("-"*40)
+    print(str(stack_lis))
+    print("-"*40)
 
-print("-"*40)
-print(str(stack_lis))
-print("-"*40)
+    stack_lis.pop_front()
+    stack_lis.pop_back()
+    stack_lis.pop_front()
+    stack_lis.pop_back()
 
-stack_lis.pop_front()
-stack_lis.pop_back()
-stack_lis.pop_front()
-stack_lis.pop_back()
+    print("-"*40)
+    print(str(stack_lis))
+    print("-"*40)
 
-print("-"*40)
-print(str(stack_lis))
-print("-"*40)
+    stack_lis.clear()
 
-stack_lis.clear()
+    print("-"*40)
+    print(str(stack_lis))
+    print("-"*40)
 
-print("-"*40)
-print(str(stack_lis))
-print("-"*40)
-
-stack_lis.pop_front()
-stack_lis.pop_back()
+    stack_lis.pop_front()
+    stack_lis.pop_back()
