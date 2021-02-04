@@ -29,6 +29,12 @@ class Deque:
             index += 1
         self.arr = new_list
 
+    def clear(self):
+        self.capacity = Deque.DEFAULT_CAPACITY
+        self.size = Deque.DEFAULT_SIZE
+        self.arr = Deque.DEFAULT_ARRAY
+        print("\nList is cleared!\n")
+
     def push_back(self, value):
         if self.size >= self.capacity:
             self.resize()
@@ -49,6 +55,7 @@ class Deque:
 
     def pop_front(self):
         if self.size == 0:
+            print("Cannot pop front. ", end="")
             self.__is_empty()
             return 0
         else:
@@ -60,6 +67,7 @@ class Deque:
 
     def pop_back(self):
         if self.size == 0:
+            print("Cannot pop back. ", end="")
             self.__is_empty()
             return 0
         else:
@@ -76,17 +84,31 @@ class Deque:
 
 stack_lis = Deque()
 
+stack_lis.push_front(3)
+stack_lis.push_front(2)
+stack_lis.push_back(4)
+stack_lis.push_back(5)
+stack_lis.push_back(6)
+stack_lis.push_front(1)
 
-
-print("-"*70)
+print("-"*40)
 print(str(stack_lis))
-print("-"*70)
+print("-"*40)
 
 stack_lis.pop_front()
 stack_lis.pop_back()
 stack_lis.pop_front()
 stack_lis.pop_back()
 
-print("-"*70)
+print("-"*40)
 print(str(stack_lis))
-print("-"*70)
+print("-"*40)
+
+stack_lis.clear()
+
+print("-"*40)
+print(str(stack_lis))
+print("-"*40)
+
+stack_lis.pop_front()
+stack_lis.pop_back()
