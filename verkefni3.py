@@ -24,6 +24,5 @@ class pizza:
     
 for i in range(3):       
     pizza1 = pizza('pepperoni', 'ham', 'extra cheese')
-    self.c += 1
 print(pizza1)
 
