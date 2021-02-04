@@ -20,7 +20,7 @@ class Deque:
     def __is_empty(self):
         print("List is empty!")
 
-    def resize(self):
+    def __resize(self):
         index = 0
         self.capacity *= 2
         new_list = [0] * self.capacity
@@ -37,7 +37,7 @@ class Deque:
 
     def push_back(self, value):
         if self.size >= self.capacity:
-            self.resize()
+            self.__resize()
         i = self.size
         while(i > 0):
             self.arr[i] = self.arr[i - 1]
@@ -48,7 +48,7 @@ class Deque:
 
     def push_front(self, value):
         if self.size >= self.capacity:
-            self.resize()
+            self.__resize()
         self.size += 1
         self.arr[self.size-1] = value
         print("{:<9} pushed infront".format(self.arr[self.size-1]))
