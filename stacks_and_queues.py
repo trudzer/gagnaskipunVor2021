@@ -1,13 +1,13 @@
 class Deque:
 
-    DEFAULT_CAPACITY = 4
-    DEFAULT_SIZE = 0
-    DEFAULT_ARRAY = [0] * DEFAULT_CAPACITY
+    __DEFAULT_CAPACITY = 4
+    __DEFAULT_SIZE = 0
+    __DEFAULT_ARRAY = [0] * __DEFAULT_CAPACITY
 
     def __init__(self):
-        self.capacity = Deque.DEFAULT_CAPACITY
-        self.size = Deque.DEFAULT_SIZE
-        self.arr = Deque.DEFAULT_ARRAY
+        self.capacity = Deque.__DEFAULT_CAPACITY
+        self.size = Deque.__DEFAULT_SIZE
+        self.arr = Deque.__DEFAULT_ARRAY
 
     def __str__(self):
         return_string = ""
@@ -30,9 +30,9 @@ class Deque:
         self.arr = new_list
 
     def clear(self):
-        self.capacity = Deque.DEFAULT_CAPACITY
-        self.size = Deque.DEFAULT_SIZE
-        self.arr = Deque.DEFAULT_ARRAY
+        self.capacity = Deque.__DEFAULT_CAPACITY
+        self.size = Deque.__DEFAULT_SIZE
+        self.arr = Deque.__DEFAULT_ARRAY
         print("\nList is cleared!\n")
 
     def push_back(self, value):
