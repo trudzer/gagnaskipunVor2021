@@ -70,22 +70,32 @@ def merge_list(head1, head2):
         return head2
 
 def insert_list(head, value):
-    node = head
-    if node == None:
-        node.next = value
-        return node.data
-    if value >= node.data:
-        node.next = value
-        node.next = merge_list(node.next, value)
-        return node
+    if head == None:
+        head = Node(value, None)
+        return head
+    if head.data == None:
+        head = Node(value, None)
+        return head
+    if value > head.data:
+        head.next = insert_list(head.next, value)
+        return head
+    if value <= head.data:
+        head.next = Node(head.data, head.next)
+        head.data = value
+        return head
+
+
+
 
 head = Node(1, Node(3, Node(5, Node(7, Node(9, Node(11, Node(13, None)))))))
 head2 = Node(2, Node(4, Node(6, Node(8, Node(10, Node(12, Node(14, None)))))))
 head3 = Node(111, Node(113, Node(115, Node(117, Node(119, Node(1111, Node(1113, None)))))))
 
-insert_list(head, 4)
+head = insert_list(head, 15)
+print("insert into list: ", end="")
 print_nodes(head)
 
+print()
 print("iterative counter: ", end="")
 print(counter_iterative(head))
 
@@ -127,3 +137,15 @@ print()
 print("merge list: ", end="")
 lis = merge_list(lis, head3)
 print_nodes(lis)
+
+print()
+head = Node()
+print("list cleared: ", end="")
+print_nodes(head)
+print()
+head = insert_list(head, 20)
+head = insert_list(head, 21)
+head = insert_list(head, 22)
+head = insert_list(head, 23)
+print("insert into list: ", end="")
+print_nodes(head)
