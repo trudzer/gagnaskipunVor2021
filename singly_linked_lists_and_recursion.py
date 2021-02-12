@@ -84,13 +84,46 @@ def insert_list(head, value):
         head.data = value
         return head
 
+def reverse_list(head):
+    prev = None
+    temp = head
+    while temp != None:
+        next = temp.next
+        temp.next = prev
+        prev = temp
+        temp = next
+    head = prev
+    return head
 
-
+def merge_sort(head):
+    node = head
+    temp1 = Node(head.data, None)
+    temp2 = Node(head.next.data, None)
+    new_linked_list = merge_list(temp1, temp2)
+    while node != None:
+        node = node.next
+        if node.next == None:
+            break
+        temp1 = Node(node.next.data, None)
+        new_linked_list = merge_list(new_linked_list, temp1)
+    return new_linked_list
 
 head = Node(1, Node(3, Node(5, Node(7, Node(9, Node(11, Node(13, None)))))))
 head2 = Node(2, Node(4, Node(6, Node(8, Node(10, Node(12, Node(14, None)))))))
 head3 = Node(111, Node(113, Node(115, Node(117, Node(119, Node(1111, Node(1113, None)))))))
+head4 = Node(31, Node(32, Node(33, Node(34, Node(35, Node(36, Node(37, None)))))))
+head5 = Node(7, Node(3, Node(4, Node(1, Node(6, Node(2, Node(5, None)))))))
 
+head5 =  merge_sort(head5)
+print("merge sort: ", end="")
+print_nodes(head5)
+
+print()
+head4 = reverse_list(head4)
+print("reverse list: ", end="")
+print_nodes(head4)
+
+print()
 head = insert_list(head, 15)
 print("insert into list: ", end="")
 print_nodes(head)
