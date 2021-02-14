@@ -30,20 +30,21 @@ def reverse_list(head):
     return node 
 
 def palindrome(head): 
+    node = head
     node_str = ""
     reverse_node_str = ""
-    node_str, reverse_node_str = palindrome_helper(head, node_str, reverse_node_str)
+    node_str, reverse_node_str = palindrome_helper(node, node_str, reverse_node_str)
     if node_str == reverse_node_str:
         return True
     else:
         return False
 
-def palindrome_helper(head, node_str, reverse_node_str):
-    if head == None:
+def palindrome_helper(node, node_str, reverse_node_str):
+    if node == None:
         return node_str, reverse_node_str
-    node_str += head.data
-    node_str, reverse_node_str = palindrome_helper(head.next, node_str, reverse_node_str)
-    reverse_node_str += head.data
+    node_str += node.data
+    node_str, reverse_node_str = palindrome_helper(node.next, node_str, reverse_node_str)
+    reverse_node_str += node.data
     return node_str, reverse_node_str
 
 if __name__ == "__main__":
