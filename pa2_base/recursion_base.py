@@ -33,19 +33,26 @@ def palindrome(head):
     node = head
     node_str = ""
     reverse_node_str = ""
-    node_str, reverse_node_str = palindrome_helper(node, node_str, reverse_node_str)
+    reverse_node_str = palindrome_reverse_helper(node, reverse_node_str)
+    node_str = palindrome_helper(node, node_str)
     if node_str == reverse_node_str:
         return True
     else:
         return False
 
-def palindrome_helper(node, node_str, reverse_node_str):
+def palindrome_helper(node, node_str):
     if node == None:
-        return node_str, reverse_node_str
+        return node_str
     node_str += node.data
-    node_str, reverse_node_str = palindrome_helper(node.next, node_str, reverse_node_str)
+    node_str = palindrome_helper(node.next, node_str)
+    return node_str
+
+def palindrome_reverse_helper(node, reverse_node_str):
+    if node == None:
+        return reverse_node_str
+    reverse_node_str = palindrome_reverse_helper(node.next, reverse_node_str)
     reverse_node_str += node.data
-    return node_str, reverse_node_str
+    return reverse_node_str
 
 if __name__ == "__main__":
     ##
