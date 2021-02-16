@@ -29,7 +29,6 @@ class DoublyLinkedList:
         self.header.next = node
         return node.data
 
-
     def push_back(self, data):
         node = Node(self.trailer.prev, data, self.trailer)
         self.trailer.prev.next = node
