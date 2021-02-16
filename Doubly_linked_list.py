@@ -5,6 +5,8 @@ class Node:
         self.data = data
         self.next = next
 
+
+
 class DoublyLinkedList:
 
     def __init__(self):
@@ -49,6 +51,8 @@ class DoublyLinkedList:
         ret_node.prev.next = self.trailer
         self.trailer.prev = self.trailer.prev.prev
         return ret_node.data
+
+
 
 class DLL_PosList:
 
@@ -168,6 +172,7 @@ if __name__ == "__main__":
     print()
 
     
+
     poslis = DLL_PosList()
     poslis2 = DLL_PosList()
 
