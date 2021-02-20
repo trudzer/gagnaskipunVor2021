@@ -54,19 +54,18 @@ class DLL:
         return self.curr.data
 
     def move_to_pos(self, pos):
+        if self.header.next == self.trailer:
+            return None
         temp = self.header
+        self.curr = self.header.next
         counter = 0
         while temp.next != self.trailer:
             counter += 1
             temp = temp.next
-        if counter < pos:
-            while counter != pos:
-                counter += 1
-                self.curr = self.curr.prev
-        if counter > pos:
-            while counter != pos:
-                counter -= 1
-                self.curr = self.curr.next
+
+        while counter != pos:
+            counter -= 1
+            self.curr = self.curr.next
         return self.curr.data
 
     def clear(self):
@@ -104,6 +103,7 @@ class DLL:
                     node.data = temp
                 node = node.next
             self.curr = self.curr.next
+        self.curr = self.trailer.prev
 
     def __len__(self):
         counter = 0
@@ -171,11 +171,23 @@ if __name__ == "__main__":
     print("The list: ", end="")
     print(poslis)
     print()
+    print("current position: ", end="")
+    print(poslis.get_value())
+    print("move to position ", end="")
+    print(poslis.move_to_pos(3))
+    print("insert: ", end="")
+    print(poslis.insert(3))
+    print()
+    print("The list: ", end="")
+    print(poslis)
+    print()
     print("clear list:")
     poslis.clear()
     print()
     print("The list: ", end="")
     print(poslis)
+    print("size of list: ", end="")
+    print(len(poslis))
     print()
     print("insert: ", end="")
     print(poslis.insert(1))
