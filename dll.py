@@ -93,7 +93,6 @@ class DLL:
 
     def sort(self):
         self.curr = self.header.next
-        node = None
         while self.curr.next != self.trailer:
             node = self.curr.next
             while node.next != self.trailer:
