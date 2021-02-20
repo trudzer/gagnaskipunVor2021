@@ -92,11 +92,16 @@ class DLL:
         pass
 
     def sort(self):
+        self.curr = self.header.next
+        node = None
         while self.curr.next != self.trailer:
-            if self.curr.next.data > self.curr.data:
-                temp = self.curr.data
-                self.curr.data = self.curr.next.data
-                self.curr.next.data = temp
+            node = self.curr.next
+            while node.next != self.trailer:
+                if node.data > self.curr.data:
+                    temp = self.curr.data
+                    self.curr.data = node.data
+                    node.data = temp
+                node = node.next
             self.curr = self.curr.next
 
     def __len__(self):
@@ -121,11 +126,11 @@ if __name__ == "__main__":
 
     print("**********DLL Pos list**********\n")
     print("insert: ", end="")
-    print(poslis.insert('A'))
+    print(poslis.insert(1))
     print("insert: ", end="")
-    print(poslis.insert('B'))
+    print(poslis.insert(2))
     print("insert: ", end="")
-    print(poslis.insert('C'))
+    print(poslis.insert(3))
     print()
     print("The list: ", end="")
     print(poslis)
@@ -138,11 +143,15 @@ if __name__ == "__main__":
     print("current position: ", end="")
     print(poslis.get_value())
     print("insert: ", end="")
-    print(poslis.insert('X'))
+    print(poslis.insert(30))
     print("move to previous position")
     poslis.move_to_prev()
     print("insert: ", end="")
-    print(poslis.insert('Z'))
+    print(poslis.insert(21))
+    print("insert: ", end="")
+    print(poslis.insert(15))
+    print("insert: ", end="")
+    print(poslis.insert(9))
     print("The list: ", end="")
     print(poslis)
     print("move to previous position")
@@ -168,17 +177,17 @@ if __name__ == "__main__":
     print(poslis)
     print()
     print("insert: ", end="")
-    print(poslis.insert('A'))
+    print(poslis.insert(1))
     print("insert: ", end="")
-    print(poslis.insert('B'))
+    print(poslis.insert(2))
     print("move to next position")
     poslis.move_to_next()
     print("insert: ", end="")
-    print(poslis.insert('C'))
+    print(poslis.insert(3))
     print("move to previous position")
     poslis.move_to_prev()
     print("insert: ", end="")
-    print(poslis.insert('D'))
+    print(poslis.insert(4))
     print()
     print("The list: ", end="")
     print(poslis)
