@@ -92,6 +92,8 @@ class DLL:
         pass
 
     def sort(self):
+        if self.header.next == self.trailer:
+            return  None
         self.curr = self.header.next
         while self.curr.next != self.trailer:
             node = self.curr.next
@@ -231,3 +233,5 @@ if __name__ == "__main__":
     print(poslis.remove())
     print("The list: ", end="")
     print(poslis)
+    print("sort list:")
+    poslis.sort()
