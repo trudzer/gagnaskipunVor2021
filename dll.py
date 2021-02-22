@@ -34,7 +34,6 @@ class DLL:
             self.curr.prev.next = self.curr.next
             self.curr = self.curr.next
             return ret_val
-
         self.curr.prev.next = self.curr.next
         self.curr = self.curr.next
         self.curr.prev = self.curr.prev.prev
@@ -45,7 +44,10 @@ class DLL:
 
     def move_to_next(self):
         if self.curr.next == self.trailer:
-            return None
+            self.curr = Node(self.trailer.prev, None, self.trailer)
+            self.trailer.prev.next = self.curr
+            self.trailer.prev = self.curr
+            return self.curr.data
         else:
             self.curr = self.curr.next
             return self.curr.data
@@ -59,21 +61,15 @@ class DLL:
 
     def move_to_pos(self, pos):
         temp = self.header
-        self.curr = self.trailer.prev
+        self.curr = self.header
         counter = 0
         while temp.next != None:
             counter += 1
             temp = temp.next
-        if counter == pos:
-            return None
-        counter -= 1
-        if pos > counter:
-            return None
-        while counter > pos:
-            counter -= 1
-            self.curr = self.curr.prev
-        if counter == pos:
-            return self.curr.data
+        for i in range(counter):
+            self.curr = self.curr.next
+            if i == pos:
+                return self.curr.data
 
     def clear(self):
         self.header = Node(None, None, next)
@@ -86,13 +82,13 @@ class DLL:
         node = self.header.next
         if node == self.trailer:
             return None
-        return node.data
+        return node
 
     def get_last_node(self):
         node = self.trailer.prev
         if node == self.header:
             return None
-        return node.data
+        return node
 
     def partition(self, low, high):
         pass
