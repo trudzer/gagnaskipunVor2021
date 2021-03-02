@@ -8,23 +8,23 @@ class BST:
     def __init__(self):
         self.root = None
 
-    def insert(self, key):
+    def add(self, key):
         if self.root == None:
             self.root = Node(key)
         else:
-            self._insert(key, self.root)
+            self._add(key, self.root)
 
-    def _insert(self, key, curr_node):
+    def _add(self, key, curr_node):
         if key < curr_node.val:
             if curr_node.left == None:
                 curr_node.left = Node(key)
             else:
-                self._insert(key, curr_node.left)
+                self._add(key, curr_node.left)
         elif key > curr_node.val:
             if curr_node.right == None:
                 curr_node.right = Node(key)
             else:
-                self._insert(key, curr_node.right)
+                self._add(key, curr_node.right)
         else:
             print("key already in tree!")
 
@@ -38,33 +38,58 @@ class BST:
             print(curr_node.val)
             self._print_tree(curr_node.right)
 
-    def search(self,key):
+    def contains(self,key):
         if self.root != None:
-            return self._search(key, self.root)
+            return self._contains(key, self.root)
         else:
             return False
 
-    def _search(self, key, curr_node):
+    def _contains(self, key, curr_node):
         if key == curr_node.val:
-            print("The key {} is in the list".format(key))
+            print("\n[TRUE] The key {} is in the tree".format(key))
             return True
         elif key < curr_node.val and curr_node.left != None:
-            return self._search(key, curr_node.left)
+            return self._contains(key, curr_node.left)
         elif key > curr_node.val and curr_node.right != None:
-            return self._search(key, curr_node.right)
-        print("The key {} is not in the list".format(key))
+            return self._contains(key, curr_node.right)
+        print("\n[FALSE] The key {} is not in the tree".format(key))
         return False 
+
+    def __len__(self):
+        if self.root != None:
+            return self._size(self.root)
+        else:
+            return 0
+
+    def _size(self,node):
+        if node is None: 
+            return 0 
+        else: 
+            return (self._size(node.left)+ 1 + self._size(node.right)) 
  
 r = BST()
-r.insert(50)
-r.insert(30)
-r.insert(20)
-r.insert(40)
-r.insert(70)
-r.insert(60)
-r.insert(80)
-r.insert(90)
+r.add(5)
+r.add(3)
+r.add(2)
+r.add(4)
+r.add(7)
+r.add(6)
+r.add(8)
+r.add(9)
+r.add(1)
+r.add(11)
+r.add(16)
+r.add(13)
+r.add(19)
+r.add(20)
+r.add(17)
+r.add(12)
+
 
 r.print_tree()
 
-r.search(60)
+r.contains(6)
+r.contains(666)
+
+print("\nThe size of the tree is:", end=" ")
+print(len(r))
