@@ -165,6 +165,5 @@ class MyComparableKey:
                 return True
             else:
                 return False
-            return True
         else:
             return False
