@@ -59,7 +59,7 @@ class Order:
             if pizza_dict[id][3] == "served":
                pizza_dict.pop(id)
         for id in list(pizza_dict):
-            if (id - 1) not in pizza_dict:
+            if (id - 1) not in pizza_dict and id != 1:
                 pizza_dict[counter] = pizza_dict.pop(id)
             counter += 1
         return pizza_dict
