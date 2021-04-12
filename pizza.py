@@ -4,7 +4,8 @@ ID = 6
 def clear():
     return print("\n" * 30)
 
-class Pizza:  
+class Pizza:
+    
     def __init__(self,id=0, topping1="", topping2="", topping3="", status="unserved"):
         id_list = []
         self.topping1 = topping1
@@ -20,6 +21,7 @@ class Pizza:
         return pizza_list
 
 class Order:
+
     def __init__(self, pizza_dict):
         self.pizza_dict = pizza_dict
 
@@ -73,6 +75,7 @@ class Order:
                 print("{}. {:<8} --- Pizza with {}".format(id, pizza_dict[id][3], pizza_dict[id][0]))
 
 def main():
+    global ID
     pizza1 = Pizza(1, "pepperoni", "cheese")
     pizza2 = Pizza(2, "ham", "bacon", "chicken")
     pizza3 = Pizza(3, "extra-cheese")
